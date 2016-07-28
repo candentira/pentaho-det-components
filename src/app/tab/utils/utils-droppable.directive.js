@@ -34,7 +34,7 @@ define(
                     el.addEventListener(
                         'drop',
                         function(e) {
-                            event.preventDefault();
+                            e.preventDefault();
                             scope.$apply('drop()');
                             return false;
                         },
@@ -44,7 +44,7 @@ define(
                     el.addEventListener(
                         'dragenter',
                         function(e) {
-                            event.preventDefault();
+                            e.preventDefault();
                         },
                         false
                     );
@@ -52,6 +52,7 @@ define(
                     el.addEventListener(
                         'dragover',
                         function(e) {
+                        e.preventDefault();
                             scope.$apply('dragover()');
                         },
                         false

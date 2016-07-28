@@ -40,6 +40,7 @@ define(
               e.dataTransfer.setDragImage(crt, 0, 0);*/
 
               scope.$apply('dragStart()');
+              e.dataTransfer.setData('text/plain', 'This text may be dragged');
               return false;
             },
             false

@@ -82,20 +82,18 @@ define(
         var srcZoneId = activeZone;//event.dataTransfer.getData("srcZoneId");
         console.log("FieldId: " + fieldId + " was dropped on dropzone >", dropZoneId);
 
+        /*
         if(srcZoneId && srcZoneId != dropZoneId) {
-          MockService.dropZoneFieldAdd(dropZoneId, fieldId);
           MockService.dropZoneFieldRemove(srcZoneId, fieldId);
         }
-        else {
-          MockService.dropZoneFieldAdd(dropZoneId, fieldId);
-        }
+        */
         draggedField = null;
         activeZone = null;
       }
 
       function onDragover(dropZone) {
         if(dropZone.maxFields > dropZone.currentFields.length) {
-          event.preventDefault();
+          //event.preventDefault();
         }
       }
 
