@@ -33,11 +33,7 @@ define(
        {id: "7", name: 'Field 7', state: false, category: 'Category 2'},
        {id: "8", name: 'Field 8', state: false, category: 'Category 3'},
        {id: "9", name: 'Field 9', state: false, category: 'Category 3'},
-       {id: "10", name: 'Field 10', state: false, category: 'Category 3'},
-       {id: "11", name: 'Field 11', state: false, category: 'Category 3'},
-       {id: "12", name: 'Field 12', state: false, category: 'Category 3'},
-       {id: "13", name: 'Field 13', state: false, category: 'Category 3'},
-       {id: "14", name: 'Field 14', state: false, category: 'Category 3'}
+       {id: "10", name: 'Field 10', state: false, category: 'Category 3'}
      ];
 
 
@@ -101,11 +97,36 @@ define(
      }
 
      function fieldSelected(selectedField) {
-       fields.forEach(function(field){
-         if(field.name == selectedField.name) {
-             field.state = !selectedField.state;
+
+       if(!selectedField.state) {
+         drop_zones.forEach(function (drop_zone) {
+           if(drop_zone.currentFields.length < drop_zone.maxFields && !selectedField.state && isDropZoneAcceptsField(selectedField, drop_zone)) {
+             drop_zone.currentFields.push(selectedField);
+             selectedField.state = true;
+           }
+         });
+       } else {
+         drop_zones.forEach(function (drop_zone) {
+           drop_zone.currentFields.forEach(function (current_field, idx) {
+             if(current_field.id == selectedField.id) {
+               drop_zone.currentFields.splice(idx,1);
+               selectedField.state = false;
+             }
+           });
+         });
+       }
+     }
+
+     function isDropZoneAcceptsField(selectedField, dropZone) {
+       var zone_items = dropZone.acceptFields;
+       for (var i = 0; i < zone_items.length; i++) {
+         var zoneItemId = zone_items[i].name;
+
+         if (zoneItemId === selectedField.name) {
+           return true;
          }
-       });
+       }
+       return false;
      }
 
 
