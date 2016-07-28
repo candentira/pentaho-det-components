@@ -48,20 +48,29 @@ body, p, ul {
 /* View List */
 
 .view-list {
-  padding: 0 0 0 22px;
+  padding: 0; /* 0 0 22px*/
   text-align: left;
   margin-top: 20px;
 }
 
-.view-list li {
+.view-list > div {
   list-style-type: none;
 }
 
-.view-list li.field,
+.view-list > div.field,
 .view-list span.label {
   height: 30px;
   line-height: 30px;
   color: #000000;
+}
+
+.view-list > div.field:hover {
+  background: rgba(204, 223, 237, 1);
+  cursor:pointer;
+}
+
+.view-list > div.field.selected {
+  color:#aaa;
 }
 
 .view-list span.label {
@@ -75,11 +84,8 @@ body, p, ul {
 
 .view-list span.active {
   height: 8px;
-  width: 8px;
-  border-radius: 50%;
-  background-color: rgba(0, 93, 166, 1);;
   float: left;
-  margin: 12px 7px 0 0;
+  margin: 1px 0 0 25px;
 }
 
 /* Search */
@@ -116,7 +122,7 @@ body, p, ul {
     background-color: rgba(248, 248, 248, 1);
     border-top: 1px solid rgba(215, 215, 215, 1);
     color: #6c6c6c;
-    padding: 10px;
+    padding: 6px;
 }
 
 .drop-zone-drop-container-active {
@@ -125,7 +131,7 @@ body, p, ul {
     background-color: rgba(204, 223, 237, 1);
     border-top: 1px solid rgba(215, 215, 215, 1);
     color: #6c6c6c;
-    padding: 10px;
+    padding: 6px;
 }
 
 .drop-zone-disabled{
@@ -133,24 +139,47 @@ body, p, ul {
     pointer-events: none;
 }
 
+.drop-zone-drop-parent-container .field {
+  background: url('') no-repeat 162px 3px;
+  width: 176px;
+  height: 24px;
+  padding: 7px 0 0 11px;
+}
+
+.drop-zone-drop-parent-container .field:hover {
+  background: rgba(204, 223, 237, 1) url('close.png') no-repeat 162px 3px;
+  cursor:pointer;
+}
+
+.drop-zone-drop-container .close {
+  float: right;
+  margin: 2px 7px 0 0;
+  width: 12px;
+  height: 12px;
+}
+
+.drop-zone-drop-container .close:hover {
+  background: rgba(204, 223, 237, 1) url('close-hover.png') no-repeat -6px -6px;
+}
+
 #drag-field-ghost {
-    background: white;
-    width: 220px;
-    height: 30px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 2;
+  background: #005eaa;
+  width: 220px;
+  height: 40px;
+  position: absolute;
+  top: -100px;
+  right: 0;
+  z-index: 2;
 }
 
 .drag-field {
   color: #000000;
-  background-color: #b0d9f5;
+  background-color: #ebf1f5;
   border: 1px solid #98bdd9;
   padding: 5px;
   width: 190px;
   cursor: move;
   position: absolute;
-  top: 0px;
+  top: -100px;
   right: 0px;
 }

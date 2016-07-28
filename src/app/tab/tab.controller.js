@@ -77,25 +77,28 @@ define(
         MockService.dropZoneFieldRemove(dropZoneId, fieldId);
       }
 
-      function onDrop(dropZoneId) {
-        var fieldId = draggedField;//event.dataTransfer.getData("fieldId");
-        var srcZoneId = activeZone;//event.dataTransfer.getData("srcZoneId");
-        console.log("FieldId: " + fieldId + " was dropped on dropzone >", dropZoneId);
+      function onDrop(dropZone) {
+        if (dropZone.maxFields > dropZone.currentFields.length) {
 
-        if(srcZoneId && srcZoneId != dropZoneId) {
-          MockService.dropZoneFieldAdd(dropZoneId, fieldId);
-          MockService.dropZoneFieldRemove(srcZoneId, fieldId);
+          var fieldId = draggedField;//event.dataTransfer.getData("fieldId");
+          var srcZoneId = activeZone;//event.dataTransfer.getData("srcZoneId");
+          console.log("FieldId: " + fieldId + " was dropped on dropzone >", dropZone.id);
+
+          if(srcZoneId && srcZoneId != dropZone.id) {
+            MockService.dropZoneFieldAdd(dropZone.id, fieldId);
+            MockService.dropZoneFieldRemove(srcZoneId, fieldId);
+          }
+          else {
+            MockService.dropZoneFieldAdd(dropZone.id, fieldId);
+          }
+          draggedField = null;
+          activeZone = null;
         }
-        else {
-          MockService.dropZoneFieldAdd(dropZoneId, fieldId);
-        }
-        draggedField = null;
-        activeZone = null;
       }
 
       function onDragover(dropZone) {
         if(dropZone.maxFields > dropZone.currentFields.length) {
-          event.preventDefault();
+          //event.preventDefault();          
         }
       }
 

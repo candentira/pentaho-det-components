@@ -34,11 +34,11 @@ define(
           el.addEventListener(
             'dragstart',
             function(e) {
-              /*var crt = this.cloneNode(true);
+              var crt = this.cloneNode(true);
               crt.className = "drag-field";
               document.body.appendChild(crt);
-              e.dataTransfer.setDragImage(crt, 0, 0);*/
-
+              e.dataTransfer.setDragImage(crt, 100, 15);
+              e.dataTransfer.setData('text/plain', 'This text may be dragged'); 
               scope.$apply('dragStart()');
               return false;
             },

@@ -1,7 +1,8 @@
 <drop-zone ng-repeat="item in vm.dropZonesList track by $index"
-   drop-zone="item" on-remove="vm.onRemove({dropZoneId:dropZoneId, fieldId:fieldId})"
-   on-drop="vm.onDrop({dropZoneId:dropZoneId})"
-   on-dragover="vm.onDragover({dropZone:dropZone})"
-   on-drag-start="vm.onDragStart({zoneId:zoneId, field:field})"
-   on-drag-stop="vm.onDragStop({zoneId:zoneId, field:field})">
+           drop-zone="item" 
+           on-remove="vm.onRemove({dropZoneId:dropZoneId, fieldId:fieldId})"
+           on-drop="vm.onDrop({dropZone:dropZone})"
+           on-dragover="vm.onDragover({dropZone:dropZone})"
+           on-drag-start="vm.onDragStart({zoneId:zoneId, field:field})"
+           on-drag-stop="vm.onDragStop({zoneId:zoneId, field:field})">
 </drop-zone>
