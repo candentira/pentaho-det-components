@@ -8,26 +8,30 @@
 <div class="drop-zone-drop-parent-container"
     ng-class="{'drop-zone-disabled': vm.dropZone.disabled}">
    <div ng-class="{'drop-zone-drop-container-active': vm.dropZone.active, 'drop-zone-drop-container': !vm.dropZone.active}"
+        ng-style="{ 'min-height': vm.dropZoneHeight() }"
         name="{{ vm.dropZone.name }}"
         id="{{ vm.dropZone.id }}"
         droppable 
         drop="vm.onDrop({dropZone: vm.dropZone})" 
         dragover="vm.onDragover({dropZone: vm.dropZone})">
-       <p ng-show="!vm.dropZone.currentFields || vm.dropZone.currentFields.length == 0">
+     <div class="drop-zone-empty-message"
+          ng-show="!vm.dropZone.currentFields || vm.dropZone.currentFields.length == 0">
+       <p>
            <span>{{ vm.dropZone.emptyLabel }}{{vm.dropZone.required ? ' *' : ''}}</span>
        </p>
-       <ul ng-show="vm.dropZone.currentFields &amp;&amp; vm.dropZone.currentFields.length &gt; 0"
-           ondrop=""
-           ondragover="">
-           <li ng-repeat="zoneField in vm.dropZone.currentFields track by $index"
-               id="{{ zoneField.id }}"
-               class="field"
-               draggable 
-               drag-start="vm.onDragStart({zoneId:vm.dropZone.id, field:zoneField})"
-               drag-stop="vm.onDragStop({zoneId:vm.dropZone.id, field:zoneField})">
-              {{ zoneField.name }}
-              <span ng-click="vm.onRemove({dropZoneId: vm.dropZone.id, fieldId:zoneField.id})" class="close">&nbsp;</span>
-           </li>
+     </div>
+     <ul ng-show="vm.dropZone.currentFields &amp;&amp; vm.dropZone.currentFields.length &gt; 0"
+         ondrop=""
+         ondragover="">
+       <li ng-repeat="zoneField in vm.dropZone.currentFields track by $index"
+           id="{{ zoneField.id }}"
+           class="field"
+           draggable
+           drag-start="vm.onDragStart({zoneId:vm.dropZone.id, field:zoneField})"
+           drag-stop="vm.onDragStop({zoneId:vm.dropZone.id, field:zoneField})">
+         {{ zoneField.name }}
+         <span ng-click="vm.onRemove({dropZoneId: vm.dropZone.id, fieldId:zoneField.id})" class="close">&nbsp;</span>
+       </li>
        </ul>
      </div>
 </div>

@@ -23,19 +23,15 @@ define(
 
       var vm = this;
 
-      function dropZoneSize() {
-        if ( vm.dropZone.maxFields && vm.dropZone.maxFields > 0 ) {
-          var currentFieldsLength = 0;
-          if ( vm.dropZone.currentFields ) {
-            currentFieldsLength = vm.dropZone.currentFields.length;
-          }
-          return Math.min(vm.dropZone.maxFields, Math.max(3, currentFieldsLength +1));
+      function dropZoneHeight() {
+        if ( vm.dropZone.maxFields && vm.dropZone.maxFields > 1 ) {
+          return '70px';
         }
-        return 0;
+        return '40px';;
       }
 
       return {
-        dropZoneSize: dropZoneSize
+        dropZoneHeight: dropZoneHeight
       }
 
     }
