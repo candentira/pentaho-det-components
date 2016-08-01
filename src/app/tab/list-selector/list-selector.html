@@ -1,17 +1,17 @@
 <div class="view-mode"
      ng-init="viewMode = 'stream'">
-  <ul>
-    <li ng-click="viewMode = 'stream'"
-        ng-class="{'active': viewMode == 'stream'}">Stream View</li>
-    <li ng-click="viewMode = 'model'"
-        ng-class="{'active': viewMode == 'model'}">Model View</li>
-  </ul>
+  <div ng-click="viewMode = 'stream'"
+        ng-class="{'active': viewMode == 'stream'}">Stream View</div>
+  <div ng-click="viewMode = 'model'"
+        ng-class="{'active': viewMode == 'model'}">Model View</div>
 </div>
 
 <!--input class="search-field"
        ng-model="search.name"
        placeholder="Field ..."-->
-<div class="search-field" ></div>
+<!-- <div class="search-field"></div> -->
+
+<span class="clear-fields">Clear all</span>
 
 <div class="view-stream"
      ng-show="viewMode == 'stream'">

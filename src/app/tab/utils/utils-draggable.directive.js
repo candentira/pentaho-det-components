@@ -34,11 +34,18 @@ define(
           el.addEventListener(
             'dragstart',
             function(e) {
+              // workaround for IE. setDragImage does not wrok in IE 
+              // so we'll just add it to the prototype of DataTransfer
+              if ('function' !== typeof DataTransfer.prototype.setDragImage) {
+                  DataTransfer.prototype.setDragImage = function(image, offsetX, offsetY) {                      
+                  };
+              }
+
               var crt = this.cloneNode(true);
               crt.className = "drag-field";
               document.body.appendChild(crt);
               e.dataTransfer.setDragImage(crt, 100, 15);
-              e.dataTransfer.setData('text/plain', 'This text may be dragged'); 
+              e.dataTransfer.setData('text', 'This text may be dragged'); 
               scope.$apply('dragStart()');
               return false;
             },

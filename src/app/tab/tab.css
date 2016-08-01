@@ -11,66 +11,72 @@ body, p, ul {
 }
 
 .components-field-selector {
-  width: 230px;
+  margin: 20px 0 0 20px;
+  background-color: #FDFDFD;
+  border: 1px solid #CCCCCC;
+  padding: 10px;
+  width: 200px;
   float: left;
-  text-align: center;
+  height: 600px; /* just for testing purposes */
 }
 
 /* View Mode Menu */
 
 .view-mode {
-  margin: 10px;
+  width: 200px;
+  line-height: 30px;
+  border: 1px solid #CCCCCC;
+  border-radius: 2px;
+  height: 30px;
+  text-align: center;
+  display: table;
+  table-layout: fixed;
 }
 
-.view-mode ul {
-  float: left;
-  left: 50%;
-  position: relative;
+.view-mode div {
+  display: table-cell;
 }
 
-.view-mode ul li{
-  float: left;
-  right: 50%;
-  position:relative;
-  padding: 7px 9px;
-  border: 1px solid #ccc;
+.view-mode div:first-of-type {
+  border-right: 1px solid #CCCCCC;
 }
 
-.view-mode ul li:first-of-type {
-  border-right: none;
-}
-
-.view-mode ul li.active {
-  box-shadow: 0px -3px 0px rgba(0, 93, 166, 1) inset;
-  color: rgba(0, 93, 166, 1);
+.view-mode div.active {
+  color: #005DA6;
+  box-shadow: 0px -3px 0px #005DA6 inset;
 }
 
 /* View List */
 
 .view-list {
-  padding: 0; /* 0 0 22px*/
+  padding: 0;
   text-align: left;
-  margin-top: 20px;
+  margin: 2;
+  border-top: 1px solid #CCCCCC;
 }
 
 .view-list > div {
   list-style-type: none;
 }
 
-.view-list > div.field,
-.view-list span.label {
+.view-list > div.field {
   height: 30px;
   line-height: 30px;
   color: #000000;
+  background: url('images/uncheck.svg') no-repeat 10px 10px;
+  background-size: 12px 12px;
+  margin-left: -10px;
+  width: 220px;
 }
 
 .view-list > div.field:hover {
-  background: rgba(204, 223, 237, 1);
+  background-color: #E6EFF6;
   cursor:pointer;
 }
 
 .view-list > div.field.selected {
-  color:#aaa;
+  background: url('images/checked.svg') no-repeat 10px 10px;
+  background-size: 12px 12px;
 }
 
 .view-list span.label {
@@ -85,7 +91,32 @@ body, p, ul {
 .view-list span.active {
   height: 8px;
   float: left;
-  margin: 1px 0 0 25px;
+  margin: 1px 0 0 32px;
+}
+
+#drag-field-ghost {
+  background-color: #E6EFF6;
+  border: 1px solid #99BEDB;
+  opacity: 0.8;
+  width: 220px;
+  height: 30px;
+  position: absolute;
+  top: -100px;
+  right: 0;
+  z-index: 2;
+}
+
+.drag-field {
+  color: #000000;
+  background-color: #E6EFF6;
+  border: 1px solid #99BEDB;
+  padding: 5px;
+  width: 170px;
+  cursor: move;
+  position: absolute;
+  top: -100px;
+  right: 0px;
+  opacity: 0.8;
 }
 
 /* Search */
@@ -97,15 +128,28 @@ body, p, ul {
   margin-top: 10px;
 }
 
+/* Clear */
+
+.clear-fields {  
+  font-size: 14px;
+  color: #005DA6;  
+  margin: 20px 0 10px 0;
+  width: 190px;
+  display: block;
+  text-align: left;
+}
+
 /* Drop Zones */
 .components-drop-zones {
   float: left;
-  margin-top: 90px;
   box-sizing: border-box;
   background-color: #FDFDFD;
   border: 1px solid #CCCCCC;
+  border-left: none;
   padding: 10px;
   width: 210px;
+  margin: 20px 0 0 0;  /* just for testing purposes */
+  height: 622px; /* just for testing purposes */
 }
 
 .drop-zone-title {
@@ -176,26 +220,4 @@ body, p, ul {
   background: rgba(204, 223, 237, 1) url('close-hover.png') no-repeat -6px -6px;
 }
 
-#drag-field-ghost {
-  background-color: #E6EFF6;
-  border: 1px solid #99BEDB;
-  opacity: 0.8;
-  width: 220px;
-  height: 30px;
-  position: absolute;
-  top: -100px;
-  right: 0;
-  z-index: 2;
-}
 
-.drag-field {
-  color: #000000;
-  background-color: #ebf1f5;
-  border: 1px solid #98bdd9;
-  padding: 5px;
-  width: 190px;
-  cursor: move;
-  position: absolute;
-  top: -100px;
-  right: 0px;
-}
